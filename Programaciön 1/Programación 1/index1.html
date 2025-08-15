@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Página Profesional</title>
+  <style>
+    :root {
+      --color-primario: #FFCF15;
+      --color-secundario: #00477A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+    }
+
+    header, footer {
+      background-color: var(--color-secundario);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    button {
+      background-color: var(--color-primario);
+      color: #000;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e6b800;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bienvenido a Mi Proyecto</h1>
+  </header>
+
+  <main>
+    <button onclick="mi_primer_algoritmo()">Ejecutar mi_primer_algoritmo()</button>
+    <button onclick="alert('Decimal: ' + binarioADecimal('1010'))">Convertir '1010' a Decimal</button>
+    <input type="number" id="numeroDecimal" placeholder="Ingresa un número decimal">
+    <button onclick="decimalABinario(document.getElementById('numeroDecimal').value)">
+    Convertir a Binario
+    </button>
+
+    <button onclick="alert('Suma en decimal: ' + sumarBinarios('1010', '1101'))">Sumar '1010' + '1101'</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mi Proyecto Profesional</p>
+  </footer>
+
+  <script src="aprendiendo.js"></script>
+</body>
+</html>
