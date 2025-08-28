@@ -9,18 +9,44 @@
             }
         }
 
+
 var lista = [];
 function InsertarLista() {
     var valorAleatorio = Math.floor(Math.random() * 10);
     lista.push(valorAleatorio);
 
-    const resultado = document.getElementById("resultado");
-
-    // Crear un botón
-    const boton = document.createElement("button");
-    boton.textContent = valorAleatorio;
-    boton.classList.add("botonLista"); // Clase para estilizar con CSS
-
-    // Agregar el botón al contenedor
-    resultado.appendChild(boton);
+    renderizarLista();
 }
+
+function EliminarLista(valor) {
+
+    lista = lista.filter(item => item !== valor);
+
+    
+    renderizarLista();
+}
+
+function EliminarListaCompleta() {
+    lista = []; 
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = ""; 
+}
+
+function renderizarLista() {
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = ""; 
+
+    lista.forEach(valor => {
+        const boton = document.createElement("button");
+        boton.textContent = valor;
+        boton.classList.add("botonLista");
+
+        boton.addEventListener("click", () => {
+            EliminarLista(valor);
+        });
+
+        resultado.appendChild(boton);
+    });
+}
+
+
