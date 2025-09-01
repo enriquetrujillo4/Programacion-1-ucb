@@ -50,3 +50,22 @@ function renderizarLista() {
 }
 
 
+function EliminarElementoLista(){
+
+    const input = document.getElementById("input").value;
+    //EL ELEMENTO ESTA INCLUIDO EN LA LISTA?
+    console.log(input)
+    while(lista.includes(input)){
+        console.log("El input esta incluido en la lista")
+        var pos = lista.indexOf(input);
+        console.log("Input en la posicion; ",pos)
+        lista.splice(pos,1);
+        console.log("Input eliminado ----------- :", input)
+    }
+    console.log("Lista actualizada !!!")
+    console.log(lista.toString())
+
+    alert(input)
+}
+
+
