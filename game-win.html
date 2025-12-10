@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>You Win</title>
+<link rel="stylesheet" href="css/styleswin.css">
+</head>
+<body>
+
+<div class="border-bricks"></div>
+<div class="border-bricks-bottom"></div>
+
+<div class="container">
+
+    <div class="title">YOU WIN</div>
+
+    <div class="sub">¡Felicidades comandante!</div>
+
+</div>
+
+<script>
+  window.addEventListener('keydown', (e) => {
+    if (e.key && e.key.toLowerCase() === 'r') {
+      window.location.href = 'index.html';
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,43 +1,31 @@
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
     <meta charset="UTF-8">
-    <title>Ejemplo con onclick</title>
+    <title>Battle City - Start</title>
+    <link rel="stylesheet" href="css/stylesindex.css">
+    </head>
+    <body>
 
-    <!-- ESTILOS CSS -->
-    <link rel="stylesheet" href="estilos.css">
+    <div class="border-bricks"></div>
+    <div class="border-bricks-bottom"></div>
 
-</head>
+    <div class="container" id="startScreen">
+        <div class="title">BATTLE CITY SUPER TANKX</div>
+        <div class="tank">
+            <!-- 64 cuadritos -->
+            <div></div>
+        </div>
+        </a>
+        <a href="game.html" class="start-btn">JUGAR AHORA</a>
 
-<body>
-    <h2>¿Cuál es tu nombre?</h2>
+        <div class="footer">© Enrique and Mateo INC.<br>TODOS LOS DERECHOS RESERVADOS</div>
+    </div>
 
-    <input type="text" id="input" placeholder="Escribe tu input aquí" />
-    <button onclick="mostrarNombre()">Mostrar</button>
-    <button onclick="InsertarLista()">INSERTAR LISTA</button>
-    <button onclick="EliminarElementoLista()">ELIMINAR ELEMENTO DE LISTA</button>
-    <button onclick="MostrarNombre()">MOSTRAR NOMBRES DEL ARRAY/LISTA</button>
-    <button onclick="MostrarHabilitadosOEP()">MOSTRAR HABILITADOS OEP</button>
-
-    <input type="text" id="input_name" placeholder="Escribe tu nombre" />
-    <input type="text" id="input_edad" placeholder="Escribe tu edad" />
-    <input type="text" id="input_correo" placeholder="Escribe tu email" />
-    <input type="text" id="input_carrera" placeholder="Escribe tu carrera" />
-    <input type="text" id="input_phone" placeholder="Escribe tu telefono" />
-    <button onclick="AddEstudiante()">AGREGAR ESTUDIANTE</button>
-
-    <p id="resultado"></p>
-    <div id="resultado" class="lista-contenedor"></div>
-
-    <div id="tabla-container"></div>
-
-    <select id="colorSelect" onchange="mostrarColor()">
-        <option value="">-- Choose a color  -- </option>
-    </select>
-
-    <!-- SCRIPT -->
-    <script src="funciones.js"></script>
-</body>
-
-</html>
+    <!-- Canvas oculto -->
+    <div id="gameWrapper">
+        <canvas id="gameCanvas"></canvas>
+    </div>
+    </body>
+    </html>
