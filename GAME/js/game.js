@@ -280,14 +280,28 @@ class Game {
     }
   }
   checkEnemyBulletCollision() {
-    for (let b = this.enemyBullets.length - 1; b >= 0; b--) {
-      if (this.enemyBullets[b].row === this.player.row &&
-          this.enemyBullets[b].col === this.player.col) {
+  for (let b = this.enemyBullets.length - 1; b >= 0; b--) {
+    if (this.enemyBullets[b].row === this.player.row &&
+        this.enemyBullets[b].col === this.player.col) {
+      
+      // Reducir vidas en cada impacto
+      this.player.lives--;
 
+      // Eliminar la bala que impactó
+      this.enemyBullets.splice(b, 1);
+      this.updateLivesDisplay(); 
+      // Verificar si ya no quedan vidas
+      if (this.player.lives <= 0) {
         window.location.href = "game-over.html";
         return;
       }
     }
+  }
+}
+updateLivesDisplay() {
+    const livesDiv = document.getElementById("lives");
+    // Muestra tantos corazones como vidas tenga el jugador
+    livesDiv.textContent = "❤️".repeat(this.player.lives);
   }
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -370,4 +384,5 @@ class Game {
       );
     });
   }
+
 }
