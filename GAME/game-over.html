@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Game Over</title>
+<link rel="stylesheet" href="css/stylesover.css">
+</head>
+<body>
+
+<div class="border-bricks"></div>
+<div class="border-bricks-bottom"></div>
+
+<div class="container">
+
+    <div class="title">GAME OVER</div>
+
+</div>
+
+<script>
+  window.addEventListener('keydown', (e) => {
+    if (e.key && e.key.toLowerCase() === 'r') {
+      window.location.href = 'index.html';
+    }
+  });
+</script>
+</body>
+</html>

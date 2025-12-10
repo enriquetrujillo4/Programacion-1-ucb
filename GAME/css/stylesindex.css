@@ -1,0 +1,90 @@
+/* stylesindex.css */
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    font-family: "Courier New", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+    border: 4px solid #ff4a3b;
+    width: 600px;
+    background: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 0 25px red;
+}
+
+.title {
+    font-size: 60px;
+    color: #ff4a3b;
+    letter-spacing: 8px;
+    font-weight: bold;
+    text-shadow: 3px 3px 0 #70241d;
+    margin-bottom: 30px;
+}
+
+.tank {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 25px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.tank div { background: #c0c0c0; }
+
+.start-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    margin-top: 20px;
+    background: yellow;
+    color: black;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 3px solid orange;
+    border-radius: 6px;
+    box-shadow: 0 0 12px yellow;
+    transition: 0.2s;
+    animation: blink 1s infinite step-end;
+}
+
+.start-btn:hover {
+    background: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px white;
+}
+
+.footer {
+    margin-top: 35px;
+    font-size: 14px;
+    color: #bbbbbb;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.border-bricks, .border-bricks-bottom {
+    position: absolute;
+    left: 0; right: 0;
+    height: 25px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ff4a3b,
+        #ff4a3b 25px,
+        #70241d 25px,
+        #70241d 50px
+    );
+}
+.border-bricks { top: 0; }
+.border-bricks-bottom { bottom: 0; }
+
+/* Ocultar canvas al inicio */
+#gameWrapper { display: none; margin-top: 20px; }
+#gameCanvas { width: 1000px; height: 1000px; display:block; }
