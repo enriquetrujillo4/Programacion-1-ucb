@@ -12,7 +12,7 @@ Pantallas de Game Over y You Win
 ![](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/GAME/assets/6.png)
 >esta imagen corresponde a el jugador del juego(el bueno).
 
-**#El villano:**
+#El villano:
 ![Asset 7](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/GAME/assets/7.png)
 ##las balas del jugador:
 ![Asset 8](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/GAME/assets/8.png)
