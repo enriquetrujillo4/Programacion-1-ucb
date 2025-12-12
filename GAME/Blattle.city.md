@@ -69,7 +69,7 @@ Su función es servir como punto de entrada y presentación del proyecto antes d
 >  Extrae los elementos de los mapas.
 
 ## Game.js
-###claseenemy
+### claseenemy
 aqui se puede ver la base de esta seccion con la clase enemy. 
 ![Captura de pantalla](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20124258.png)
 > La clase enemy sirve tanto para comprobar el movimiento de los enemigos como para ver cuantos de ellos hay.
