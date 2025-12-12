@@ -62,7 +62,7 @@ Su función es servir como punto de entrada y presentación del proyecto antes d
 > esta es la mantalla mostrada una vez el jugador gana el juego al lograr soperar su ultimo nivel.
 #js(logica del jugo):
 
-##Matrix.js:
+#Matrix.js:
 
 ![Vista del juego](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20114235.png)
 
