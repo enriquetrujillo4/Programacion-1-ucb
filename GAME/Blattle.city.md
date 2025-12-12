@@ -14,9 +14,9 @@ Pantallas de Game Over y You Win
 
 # El villano:
 ![Asset 7](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/GAME/assets/7.png)
-##las balas del jugador:
+## las balas del jugador:
 ![Asset 8](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/GAME/assets/8.png)
-##las balas del villano:
+## las balas del villano:
 ![Asset 9](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/GAME/assets/9.png)
 
 
