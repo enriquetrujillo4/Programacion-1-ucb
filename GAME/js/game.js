@@ -1,4 +1,3 @@
-
 class enemigos {
   constructor(row, col, value = 7) {
     this.row = row;
@@ -8,16 +7,16 @@ class enemigos {
   }
   moveVertical(rows) {
     let newRow = this.row + this.dr;
-    if (newRow < 0 || newRow >= rows) {
+    if (newRow < 1 || newRow >= rows-1) {
       this.dr = -this.dr;
       newRow = this.row + this.dr;
     }
     this.row = newRow;
   }
 }
-// Enemigos horizontales (nivel 3)
+
 class enemigolados {
-  constructor(row, col, value = 7) {
+  constructor(row, col, value = 10) {
     this.row = row;
     this.col = col;
     this.value = value;
@@ -25,13 +24,14 @@ class enemigolados {
   }
   moveHorizontal(cols) {
     let newCol = this.col + this.dc;
-    if (newCol < 0 || newCol >= cols) {
+    if (newCol < 1 || newCol >= cols-1) {
       this.dc = -this.dc; // cambio de dirección
       newCol = this.col + this.dc;
     }
     this.col = newCol;
   }
 }
+
 // Bala del jugador
 class Bullet {
   constructor(row, col, value = 8) {
@@ -44,16 +44,14 @@ class Bullet {
   move(rows, cols) {
     const newRow = this.row + this.dr;
     const newCol = this.col + this.dc;
-
     if (newRow < 0 || newRow >= rows) return false;
     if (newCol < 0 || newCol >= cols) return false;
-
     this.row = newRow;
     this.col = newCol;
     return true;
   }
 }
-// Bala enemiga
+
 class EnemyBullet {
   constructor(row, col, dr, dc, value = 9) {
     this.row = row;
@@ -72,14 +70,13 @@ class EnemyBullet {
     return true;
   }
 }
-//GAME CLASS
+
 class Game {
   currentLevel = 1;
   lastDirection = { dr: -1, dc: 0 };
   startCellCleared = false;
 
   constructor(canvasId, mapMatrix, images) {
-
     this.canvas = document.getElementById(canvasId);
     this.ctx = this.canvas.getContext("2d");
 
@@ -103,8 +100,10 @@ class Game {
     this.moveBullets();
 
     this.initControls();
+    this.player.lives = 3;
+    this.updateLivesDisplay();
   }
-  // PLAYER
+
   initPlayer() {
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
@@ -115,31 +114,34 @@ class Game {
     }
     return new Player(0, 0, 6);
   }
+
   initControls() {
     document.addEventListener("keydown", (e) => {
       switch (e.key) {
         case "ArrowUp":
-          this.lastDirection = { dr: -1, dc: 0 }; 
-          this.handleMove(-1, 0); 
+          this.lastDirection = { dr: -1, dc: 0 };
+          this.handleMove(-1, 0);
           break;
-        case "ArrowDown":  
-          this.lastDirection = { dr: 1, dc: 0 };  
-          this.handleMove(1, 0); 
+        case "ArrowDown":
+          this.lastDirection = { dr: 1, dc: 0 };
+          this.handleMove(1, 0);
           break;
-        case "ArrowLeft":  
-          this.lastDirection = { dr: 0, dc: -1 }; 
-          this.handleMove(0, -1); 
+        case "ArrowLeft":
+          this.lastDirection = { dr: 0, dc: -1 };
+          this.handleMove(0, -1);
           break;
-        case "ArrowRight": 
-          this.lastDirection = { dr: 0, dc: 1 };  
-          this.handleMove(0, 1); 
+        case "ArrowRight":
+          this.lastDirection = { dr: 0, dc: 1 };
+          this.handleMove(0, 1);
           break;
-        case " ": 
-          this.fireBullet(); break;
+        case " ":
+          this.fireBullet();
+          new Audio("assets/sounds/space.mp3").play();
+          break;
       }
     });
   }
-  //SISTEMA DE NIVELES
+
   nextLevel() {
     this.currentLevel++;
     if (!LEVELS[this.currentLevel]) {
@@ -148,93 +150,94 @@ class Game {
     }
     this.loadLevel(LEVELS[this.currentLevel]);
   }
-
   loadLevel(levelData) {
     this.mapMatrix.fillFromArray(levelData);
-
     this.player = this.initPlayer();
+    this.player.lives = 3;
+    this.updateLivesDisplay();
     this.enemies = [];
     this.horizontalEnemies = [];
     this.bullets = [];
     this.enemyBullets = [];
-
     this.spawnEnemies();
     this.draw();
   }
 
   handleMove(dr, dc) {
-  const beforeRow = this.player.row;
-  const beforeCol = this.player.col;
+    const beforeRow = this.player.row;
+    const beforeCol = this.player.col;
 
-  const newRow = beforeRow + dr;
-  const newCol = beforeCol + dc;
-  // Obtener el tipo de casilla a la que quiero moverme
-  const tile = this.mapMatrix.getValue(newRow, newCol);
-  // Valores permitidos (vacio y pasto)
-  const walkable = [1, 4];
-  // lugares donde no avanza 
-  if (!walkable.includes(tile)) return;
-  this.player.move(dr, dc, this.rows, this.cols);
-  // Borrar la casilla inicial cuando se mueve por primera vez
-  const moved = this.player.row !== beforeRow || this.player.col !== beforeCol;
-  if (moved && !this.startCellCleared) {
-    this.mapMatrix.setValue(beforeRow, beforeCol, 1);
-    this.startCellCleared = true;
+    const newRow = beforeRow + dr;
+    const newCol = beforeCol + dc;
+
+    const tile = this.mapMatrix.getValue(newRow, newCol);
+    const walkable = [1, 4, 5];
+    if (!walkable.includes(tile)) return;
+
+    this.player.move(dr, dc, this.rows, this.cols);
+
+    const moved = this.player.row !== beforeRow || this.player.col !== beforeCol;
+    if (moved && !this.startCellCleared) {
+      this.mapMatrix.setValue(beforeRow, beforeCol, 1);
+      this.startCellCleared = true;
+    }
+
+    this.draw();
   }
-  this.draw();
-}
+
   spawnEnemies() {
-    //  1 enemigos naturales 
     if (this.currentLevel === 1) {
-      for (let i = 0; i < 3; i++) {
-        this.enemies.push(new enemigos(0, Math.floor(Math.random() * this.cols)));
+      for (let i = 1; i < 3; i++) {
+        this.enemies.push(new enemigos(1, Math.floor(Math.random() * this.cols)));
       }
     }
-    // 2 enemigos rapidos 
+
     if (this.currentLevel === 2) {
-      for (let i = 0; i < 7; i++) {
-        this.enemies.push(new enemigos(0, Math.floor(Math.random() * this.cols)));
+      for (let i = 1; i < 7; i++) {
+        this.enemies.push(new enemigos(1, Math.floor(Math.random() * this.cols)));
       }
     }
-    // enemigos horizontales
+
     if (this.currentLevel === 3) {
-  // Enemigos horizontales
-      const rows = [2, 8, 15];
-      rows.forEach(r => {
+      const rows = [8, 12, 25];
+      rows.forEach((r) => {
         this.horizontalEnemies.push(new enemigolados(r, 0));
-        });
-  // Enemigos verticales tambien
-        for (let i = 0; i < 5; i++) {
-        this.enemies.push(new enemigos(0, Math.floor(Math.random() * this.cols)));
-        }
-        }
-        }
+      });
+
+      for (let i = 1; i < 5; i++) {
+        this.enemies.push(new enemigos(1, Math.floor(Math.random() * this.cols)));
+      }
+    }
+  }
+
   moveEnemies() {
     setInterval(() => {
-      // enemigos verticales
-      const speed = this.currentLevel === 2 ? 2 : 1; // nivel 2 más rápido
+      const speed = this.currentLevel === 2 ? 2 : 1;
+
       for (let i = 0; i < speed; i++) {
-        this.enemies.forEach(enemy => {
+        this.enemies.forEach((enemy) => {
           enemy.moveVertical(this.rows);
           this.enemyBullets.push(new EnemyBullet(enemy.row, enemy.col, 1, 0));
         });
       }
-      // enemigos horizontales 
-      this.horizontalEnemies.forEach(enemy => {
+
+      this.horizontalEnemies.forEach((enemy) => {
         enemy.moveHorizontal(this.cols);
-        this.enemyBullets.push(new EnemyBullet(enemy.row, enemy.col, 0, enemy.dc));
+        this.enemyBullets.push(new EnemyBullet(enemy.row, enemy.col, 0, 1));
       });
+
       this.draw();
     }, 450);
   }
+
   moveEnemyBullets() {
     setInterval(() => {
-      this.enemyBullets =
-        this.enemyBullets.filter(b => b.move(this.rows, this.cols));
+      this.enemyBullets = this.enemyBullets.filter((b) => b.move(this.rows, this.cols));
       this.checkEnemyBulletCollision();
       this.draw();
     }, 120);
   }
+
   fireBullet() {
     const b = new Bullet(this.player.row, this.player.col);
     b.dr = this.lastDirection.dr;
@@ -244,31 +247,31 @@ class Game {
 
   moveBullets() {
     setInterval(() => {
-      this.bullets = this.bullets.filter(b => b.move(this.rows, this.cols));
+      this.bullets = this.bullets.filter((b) => b.move(this.rows, this.cols));
       this.checkBulletCollisions();
       this.draw();
     }, 90);
-  } 
-  checkBulletCollisions() {
+  }
 
-    // verticales
+  checkBulletCollisions() {
     for (let b = this.bullets.length - 1; b >= 0; b--) {
       for (let e = this.enemies.length - 1; e >= 0; e--) {
-        if (this.bullets[b].row === this.enemies[e].row &&
-            this.bullets[b].col === this.enemies[e].col) {
-
+        if (
+          this.bullets[b].row === this.enemies[e].row &&
+          this.bullets[b].col === this.enemies[e].col
+        ) {
           this.bullets.splice(b, 1);
           this.enemies.splice(e, 1);
           break;
         }
       }
     }
-    // horizontales
     for (let b = this.bullets.length - 1; b >= 0; b--) {
       for (let e = this.horizontalEnemies.length - 1; e >= 0; e--) {
-        if (this.bullets[b].row === this.horizontalEnemies[e].row &&
-            this.bullets[b].col === this.horizontalEnemies[e].col) {
-
+        if (
+          this.bullets[b].row === this.horizontalEnemies[e].row &&
+          this.bullets[b].col === this.horizontalEnemies[e].col
+        ) {
           this.bullets.splice(b, 1);
           this.horizontalEnemies.splice(e, 1);
           break;
@@ -280,33 +283,31 @@ class Game {
     }
   }
   checkEnemyBulletCollision() {
-  for (let b = this.enemyBullets.length - 1; b >= 0; b--) {
-    if (this.enemyBullets[b].row === this.player.row &&
-        this.enemyBullets[b].col === this.player.col) {
-      
-      // Reducir vidas en cada impacto
-      this.player.lives--;
-
-      // Eliminar la bala que impactó
+    for (let b = this.enemyBullets.length - 1; b >= 0; b--) {
+      const hit =
+        this.enemyBullets[b].row === this.player.row &&
+        this.enemyBullets[b].col === this.player.col;
+      if (!hit) continue;
+      this.player.lives = Number(this.player.lives) - 1;
       this.enemyBullets.splice(b, 1);
-      this.updateLivesDisplay(); 
-      // Verificar si ya no quedan vidas
       if (this.player.lives <= 0) {
-        window.location.href = "game-over.html";
+        window.location.replace("./game-over.html");
         return;
       }
+      this.updateLivesDisplay();
+      return;
     }
   }
-}
-updateLivesDisplay() {
+
+  updateLivesDisplay() {
     const livesDiv = document.getElementById("lives");
-    // Muestra tantos corazones como vidas tenga el jugador
+    if (!livesDiv) return;
     livesDiv.textContent = "❤️".repeat(this.player.lives);
   }
+
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // fondo
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
         const value = this.mapMatrix.getValue(r, c);
@@ -322,7 +323,7 @@ updateLivesDisplay() {
         }
       }
     }
-    // jugador
+
     if (this.player) {
       const img = this.images[this.player.value];
       const x = this.player.col * this.cellSize;
@@ -337,11 +338,11 @@ updateLivesDisplay() {
       if (this.lastDirection.dc === 1) this.ctx.rotate(Math.PI / 2);
       if (this.lastDirection.dc === -1) this.ctx.rotate(-Math.PI / 2);
 
-      this.ctx.drawImage(img, -size/2, -size/2, size, size);
+      this.ctx.drawImage(img, -size / 2, -size / 2, size, size);
       this.ctx.restore();
     }
-    // enemigos normales
-    this.enemies.forEach(e => {
+
+    this.enemies.forEach((e) => {
       const img = this.images[e.value];
       this.ctx.drawImage(
         img,
@@ -351,8 +352,8 @@ updateLivesDisplay() {
         this.cellSize
       );
     });
-    // enemigos horizontales
-    this.horizontalEnemies.forEach(e => {
+
+    this.horizontalEnemies.forEach((e) => {
       const img = this.images[e.value];
       this.ctx.drawImage(
         img,
@@ -362,8 +363,8 @@ updateLivesDisplay() {
         this.cellSize
       );
     });
-    // balas jugador
-    this.bullets.forEach(b => {
+
+    this.bullets.forEach((b) => {
       const img = this.images[b.value];
       this.ctx.drawImage(
         img,
@@ -372,8 +373,9 @@ updateLivesDisplay() {
         this.cellSize,
         this.cellSize
       );
-    });  
-    this.enemyBullets.forEach(b => {
+    });
+
+    this.enemyBullets.forEach((b) => {
       const img = this.images[b.value];
       this.ctx.drawImage(
         img,
@@ -384,5 +386,5 @@ updateLivesDisplay() {
       );
     });
   }
-
 }
+
