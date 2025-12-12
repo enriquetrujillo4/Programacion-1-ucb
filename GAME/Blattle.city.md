@@ -12,7 +12,7 @@ Pantallas de Game Over y You Win
 ![](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/GAME/assets/6.png)
 >esta imagen corresponde a el jugador del juego(el bueno).
 
-#El villano:
+# El villano:
 ![Asset 7](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/GAME/assets/7.png)
 ##las balas del jugador:
 ![Asset 8](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/GAME/assets/8.png)
@@ -32,8 +32,8 @@ Pantallas de Game Over y You Win
 | Mover derecha       | → (Flecha derecha)    |
 | Disparar            | Barra espaciadora     |
 
-#Seccion web:
-##index.html:
+# Seccion web:
+## index.html:
 
 ![Vista del juego](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20113322.png)
 
@@ -62,49 +62,49 @@ Su función es servir como punto de entrada y presentación del proyecto antes d
 > esta es la mantalla mostrada una vez el jugador gana el juego al lograr soperar su ultimo nivel.
 #js(logica del jugo):
 
-#Matrix.js:
+## Matrix.js:
 
 ![Vista del juego](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20114235.png)
 
 >  extrae los elementos de los mapas.
 
-##Game.js
+## Game.js
 ###claseenemy
 aqui se puede ver la base de esta seccion con la clase enemy. 
 ![Captura de pantalla](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20124258.png)
 >la clase enemy sirve tanto para comprobar el movimiento de los enemigos como para ver cuantos de ellos hay.
 
-##clasebullets 
+## clasebullets 
 ![Captura de pantalla 2](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20124344.png)
 >esta controla las balas  sus movimientos y sus reacciones.
 
-##clase game 
+## clase game 
 
 ![Captura de pantalla 3](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20124358.png)
 >importa el nivel en el que estamos el mapa 
 
-##funciones de game:
-###como se mueve:
+## funciones de game:
+### como se mueve:
 ![Captura de pantalla 10](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173102.png)
 >ve que hacer al precionar los botones del juego.
 
-##handleMove():
+## handleMove():
 ![Captura de pantalla 4](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173119.png)
 >handlemove es una funcionn que primero(ve si se puede avanzar en cierta casilla)y borra al jugador de la casilla en la que estaba previamente.
 
-##spawnEnemies():
+## spawnEnemies():
 ![Captura de pantalla 5](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173132.png)
 >crea a los enemigos base(n1) de ahi crea enemigos rapidos(n2) y a los enemigos horizontales(n3)y a los verticales.
 
-##movimientos del enemigo y bala:
+## movimientos del enemigo y bala:
 ![Captura de pantalla 6](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173201.png)
 >hace que el enemigo se mueva automaticamente y programa sus disparos con estas dos funciones.
 
-##checkBulletColissions():
+## checkBulletColissions():
 ![Captura de pantalla 7](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173243.png)
 >se encarga de ver que las balas inpacten al jugador.
 
-##chekEnemyBulletCollissions:
+## chekEnemyBulletCollissions:
 ![Captura de pantalla 11](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173301.png)
 >ven el impacto que tienen las balas en ele enemigo.
 
