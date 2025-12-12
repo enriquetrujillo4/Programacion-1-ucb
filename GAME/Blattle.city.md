@@ -109,18 +109,18 @@ aqui se puede ver la base de esta seccion con la clase enemy.
 >ven el impacto que tienen las balas en ele enemigo.
 
 
-##Movimiento del jugador:
+## Movimiento del jugador:
 ![Captura de pantalla 8](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173408.png)
 >ven movimiento.
 
-##Main.js:
+## Main.js:
 ![Captura de pantalla 9](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20175243.png)
 >es donde se crean los niveles y mapas de l juego representando cada numero una de nuestras 9 imagenes.
 
-##app.js:
+## app.js:
 ![Vista del juego](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20115714.png)
 > define   la  matriz su ancho su largo y la cantidad de celdas que este contiene ademas carga las imagenes desde assets y las dibuja en la mtriz.
 
-##player.js:
+## player.js:
 ![Vista del juego](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20115925.png)
  > Esta imagen corresponge al cogigo del jugador
