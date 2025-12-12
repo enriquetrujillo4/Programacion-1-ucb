@@ -111,15 +111,15 @@ aqui se puede ver la base de esta seccion con la clase enemy.
 
 ## Movimiento del jugador:
 ![Captura de pantalla 8](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173408.png)
-> Ven movimiento.
+> En esta parte del codigo, se logra que el jugador rote en la direccion del movimiento 
 
 ## Main.js:
 ![Captura de pantalla 9](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20175243.png)
-> Es donde se crean los niveles y mapas de l juego representando cada numero una de nuestras 9 imagenes.
+> Es donde se crean los niveles y mapas del juego representando con cada número una de nuestras 10 imagenes.
 
 ## app.js:
 ![Vista del juego](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20115714.png)
-> Define  la  matriz su ancho su largo y la cantidad de celdas que este contiene ademas carga las imagenes desde assets y las dibuja en la matriz.
+> Define  la  matriz su ancho su largo y la cantidad de celdas que este contiene, ademas carga las imagenes desde assets y las dibuja en la matriz.
 
 ## player.js:
 ![Vista del juego](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20115925.png)
