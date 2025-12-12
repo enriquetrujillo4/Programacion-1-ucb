@@ -1,4 +1,4 @@
-### Battle City Super Tank 2d
+## Battle City Super Tank 2d
 
 Battle City Super TankX es un juego 2D inspirado en Battle City / Super Tank, desarrollado con HTML5 Canvas, JavaScript y un motor simple de mapas basado en matrices.
 El jugador controla un tanque, destruye enemigos y avanza entre niveles cada vez más difíciles. Incluye:
@@ -74,11 +74,11 @@ aqui se puede ver la base de esta seccion con la clase enemy.
 ![Captura de pantalla](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20124258.png)
 >la clase enemy sirve tanto para comprobar el movimiento de los enemigos como para ver cuantos de ellos hay.
 
-###clasebullets 
+##clasebullets 
 ![Captura de pantalla 2](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20124344.png)
 >esta controla las balas  sus movimientos y sus reacciones.
 
-###clase game 
+##clase game 
 
 ![Captura de pantalla 3](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20124358.png)
 >importa el nivel en el que estamos el mapa 
@@ -88,39 +88,39 @@ aqui se puede ver la base de esta seccion con la clase enemy.
 ![Captura de pantalla 10](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173102.png)
 >ve que hacer al precionar los botones del juego.
 
-###handleMove():
+##handleMove():
 ![Captura de pantalla 4](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173119.png)
 >handlemove es una funcionn que primero(ve si se puede avanzar en cierta casilla)y borra al jugador de la casilla en la que estaba previamente.
 
-###spawnEnemies():
+##spawnEnemies():
 ![Captura de pantalla 5](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173132.png)
 >crea a los enemigos base(n1) de ahi crea enemigos rapidos(n2) y a los enemigos horizontales(n3)y a los verticales.
 
-###movimientos del enemigo y bala:
+##movimientos del enemigo y bala:
 ![Captura de pantalla 6](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173201.png)
 >hace que el enemigo se mueva automaticamente y programa sus disparos con estas dos funciones.
 
-###checkBulletColissions():
+##checkBulletColissions():
 ![Captura de pantalla 7](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173243.png)
 >se encarga de ver que las balas inpacten al jugador.
 
-###chekEnemyBulletCollissions:
+##chekEnemyBulletCollissions:
 ![Captura de pantalla 11](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173301.png)
 >ven el impacto que tienen las balas en ele enemigo.
 
 
-###Movimiento del jugador:
+##Movimiento del jugador:
 ![Captura de pantalla 8](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20173408.png)
 >ven movimiento.
 
-###Main.js:
+##Main.js:
 ![Captura de pantalla 9](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20175243.png)
 >es donde se crean los niveles y mapas de l juego representando cada numero una de nuestras 9 imagenes.
 
-###app.js:
+##app.js:
 ![Vista del juego](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20115714.png)
 > define   la  matriz su ancho su largo y la cantidad de celdas que este contiene ademas carga las imagenes desde assets y las dibuja en la mtriz.
 
-###player.js:
+##player.js:
 ![Vista del juego](https://raw.githubusercontent.com/enriquetrujillo4/Programacion-1-ucb/main/fotos/Captura%20de%20pantalla%202025-12-11%20115925.png)
  > Esta imagen corresponge al cogigo del jugador
